@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minecraft Launcher - Windows 98 Edition</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="launcher-container" style="position: relative;">
+      
+      <!-- ГЛАВНОЕ ОКНО ЛАУНЧЕРА -->
+      <div class="window" id="main-window" style="width: 420px; height: 100%;">
+        <div class="title-bar" data-tauri-drag-region>
+          <div class="title-bar-text" data-tauri-drag-region>Minecraft Launcher - Windows 98 Edition</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize" id="btn-minimize"></button>
+            <button aria-label="Maximize" disabled></button>
+            <button aria-label="Close" id="btn-close"></button>
+          </div>
+        </div>
+        
+        <div class="window-body">
+          <p style="text-align: center; margin-bottom: 15px;">
+            Введите данные для запуска Minecraft
+          </p>
+          
+          <fieldset>
+            <legend>Авторизация (Пиратская)</legend>
+            <div class="field-row-stacked" style="width: 200px; margin: 0 auto;">
+              <label for="username">Имя игрока (Никнейм):</label>
+              <input id="username" type="text" value="Player" />
+            </div>
+          </fieldset>
+
+          <fieldset style="margin-top: 15px;">
+            <legend>Настройки игры</legend>
+            <div class="field-row-stacked" style="width: 200px; margin: 0 auto;">
+              <label for="version-select">Версия игры:</label>
+              <select id="version-select">
+                <option value="">Загрузка списка версий...</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- КНОПКИ УПРАВЛЕНИЯ -->
+          <div class="field-row" style="justify-content: center; margin-top: 20px; gap: 10px;">
+            <button id="btn-settings" style="width: 120px; height: 30px;">
+              Настройки...
+            </button>
+            <button id="btn-launch" style="width: 150px; height: 30px; font-weight: bold;">
+              Запуск игры
+            </button>
+          </div>
+          
+          <div class="status-bar" style="margin-top: 20px;">
+            <p class="status-bar-field" id="status-text">Статус: Готов к запуску</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ВСПЛЫВАЮЩЕЕ ОКНО НАСТРОЕК (СКРЫТО ПО УМОЛЧАНИЮ) -->
+      <div class="window" id="settings-window" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 340px; z-index: 100; box-shadow: 2px 2px 10px rgba(0,0,0,0.5);">
+        <div class="title-bar" data-tauri-drag-region>
+          <div class="title-bar-text" data-tauri-drag-region>Свойства: Настройки</div>
+          <div class="title-bar-controls">
+            <button aria-label="Close" id="settings-close"></button>
+          </div>
+        </div>
+        <div class="window-body">
+          
+          <fieldset>
+            <legend>Выделение памяти (ОЗУ)</legend>
+            <div class="field-row" style="justify-content: space-between; align-items: center;">
+              <label for="settings-ram">Максимум памяти:</label>
+              <select id="settings-ram" style="width: 140px;">
+                <option value="1">1 ГБ (Для слабых ПК)</option>
+                <option value="2">2 ГБ (Рекомендуется)</option>
+                <option value="4">4 ГБ</option>
+                <option value="6">6 ГБ</option>
+                <option value="8">8 ГБ</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset style="margin-top: 15px;">
+            <legend>Разрешение игры (экран)</legend>
+            <div class="field-row" style="justify-content: space-between; align-items: center; gap: 5px;">
+              <label for="settings-width">Ширина:</label>
+              <input id="settings-width" type="number" value="854" style="width: 60px;" />
+              <label for="settings-height">Высота:</label>
+              <input id="settings-height" type="number" value="480" style="width: 60px;" />
+            </div>
+          </fieldset>
+
+          <div class="field-row" style="justify-content: flex-end; margin-top: 20px; gap: 5px;">
+            <button id="settings-ok" style="width: 70px; font-weight: bold;">ОК</button>
+            <button id="settings-cancel" style="width: 70px;">Отмена</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
